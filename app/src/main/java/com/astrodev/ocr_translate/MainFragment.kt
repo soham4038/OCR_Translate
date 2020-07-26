@@ -121,7 +121,7 @@ class MainFragment : Fragment() {
             android.R.layout.simple_spinner_dropdown_item, viewModel.availableLanguages
         )
         bottomSheetBehavior = from(bottom_sheet)
-        bottomSheetBehavior.peekHeight = getNavigationBarHeight(this.requireContext()) + 5
+        bottomSheetBehavior.peekHeight = getNavigationBarHeight(this.requireContext())
         bottomSheetBehavior.state = STATE_COLLAPSED
 
         targetLangSelector.adapter = adapter
@@ -171,15 +171,14 @@ class MainFragment : Fragment() {
                 graphic_overlay.isVisible = true
                 when (newState) {
                     STATE_HIDDEN -> {
-                        bottomSheet.alpha = 0.4F
+
                     }
                     STATE_EXPANDED -> {
-                        bottomSheet.alpha = 0.5F
+
                         graphic_overlay.isVisible = false
 
                     }
                     STATE_COLLAPSED -> {
-                        bottomSheet.alpha = 0.4F
 
 
                     }

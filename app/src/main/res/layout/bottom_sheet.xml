@@ -8,8 +8,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
     android:layout_weight="0.2"
-    android:alpha="0.4"
-    android:background="@android:color/white"
+    android:alpha="0.6"
+    android:background="@android:color/transparent"
     android:elevation="5dp"
     android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
     app:layout_anchorGravity="bottom"
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:textColor="@android:color/primary_text_light"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/srcTextScrollView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,11 +33,13 @@
         android:id="@+id/srcTextScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/primary_text_dark"
         android:fillViewport="true"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@id/progressText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/srcLang">
 
@@ -57,17 +60,9 @@
         android:layout_width="20dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
+        android:alpha="0.6"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/divider2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/srcTextScrollView" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/translatedTextScrollView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/srcTextScrollView" />
 
@@ -75,8 +70,14 @@
         android:id="@+id/progressText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:alpha="1"
+        android:background="@android:color/white"
         android:gravity="center|center_vertical"
         android:text="@string/downloading_model_files"
+        android:textColor="@android:color/secondary_text_dark"
+        android:textSize="16.5sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@id/progressBar"
         app:layout_constraintStart_toEndOf="@+id/progressBar" />
 
@@ -84,15 +85,19 @@
         android:id="@+id/targetLangSelector"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginStart="106dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toTopOf="@id/divider2"
+        android:alpha="1"
+        app:layout_constraintBottom_toTopOf="@id/translatedTextScrollView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progressText"
         app:layout_constraintTop_toBottomOf="@id/srcTextScrollView" />
 
     <ScrollView
         android:id="@+id/translatedTextScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@android:color/white"
         android:fillViewport="true"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +113,9 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="4dp"
-            android:text="@string/translated_text" />
+            android:text="@string/translated_text"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/black" />
     </ScrollView>
 
     <androidx.constraintlayout.widget.Guideline
@@ -128,15 +135,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@id/translatedTextScrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageView
         android:id="@+id/arrow"
         android:layout_width="wrap_content"
@@ -144,6 +142,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="173dp"
         android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_blue_dark"
+        android:backgroundTint="@android:color/background_light"
+        android:backgroundTintMode="src_over"
         app:layout_constraintBottom_toTopOf="@+id/srcTextScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
